@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 
 @app.route("/getclassification", methods=['GET'])
-def hello():
-    return request.json['q']
+def getClassification():
+    
 
 if __name__ == "__main__":
     app.run()
