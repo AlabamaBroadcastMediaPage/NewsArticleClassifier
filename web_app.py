@@ -15,14 +15,13 @@ model = st.radio(
     ('Linear Regression', 'Logistic Regression', 'Random Forest Classification'))
 
 if st.button('Classify'):
-    model_num=0
-    match model:
-        case 'Linear Regression':
-            model_num = 0
-        case 'Logistic Regression':
-            model_num = 1
-        case 'Random Forest Classification':        
-            model_num = 2
+    
+    if(model=='Linear Regression'):
+        model_num = 0
+    elif(model =='Logistic Regression'):
+        model_num=1
+    else:
+        model_num=2
 
     url = "localhost:8888/getclassification"
     my_headers = {
