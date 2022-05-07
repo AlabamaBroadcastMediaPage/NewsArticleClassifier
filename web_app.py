@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 import requests
 from flask import Flask
+import api_web
 
 
 
@@ -44,16 +45,4 @@ if st.button('Classify'):
     r = requests.get(url, headers=my_headers, json=data)
     st.write(r.content)
 
-app = Flask(__name__)
-
-@app.route("/getclassification", methods=['GET'])
-def serve_foo():
-    accuracy = 0
-    positive = True
-    if(positive):
-        outputString = "This article is mainly positive. I'm " + str(accuracy*100) + "% sure."
-    else:
-        outputString = "This article is mainly positive. I'm " + str(accuracy*100) + "% sure."
-    return outputString
-
-app.run(port=8888)
+api_web.startlocal()
