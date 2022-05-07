@@ -9,26 +9,33 @@ st.write("""
 ### Classify your news articles with different machine learning models!
 """)
 
-article_content = st.text_input('Article to classify', 'Enter text here')
+st.write("Who is the author of the article?")
+author = st.text_input('Author name')
+st.write("How many positive sentences does this article have?")
+positive_num = st.number_input('Positive sentences', step=1, min_value=0)
+st.write("How many negative sentences does this article have?")
+negative_num = st.number_input('Negative sentences', step=1, min_value=0)
+
+
 model = st.radio(
     "What machine learning model do you want to use?",
-    ('Linear Regression', 'Logistic Regression', 'Random Forest Classification'))
+    ('Logistic Regression', 'Random Forest Classification'))
 
 if st.button('Classify'):
 
-    if(model=='Linear Regression'):
-        model_num = 0
-    elif(model =='Logistic Regression'):
+    if(model =='Logistic Regression'):
         model_num=1
     else:
         model_num=2
 
-    url = "https://127.0.0.1:8888/getclassification"
+    url = "https://localhost:8888/getclassification"
     my_headers = {
     'Authorization': 'XXXXX',}
     data = { 
     "q": {
-        "content": article_content,
+        "author": author,
+        "pos": positive_num,
+        "neg": negative_num,
         "model": model_num 
     }}
     r = requests.get(url, headers=my_headers, json=data)
