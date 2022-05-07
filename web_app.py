@@ -2,6 +2,21 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import requests
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/getclassification", methods=['GET'])
+def serve_foo():
+    accuracy = 0
+    positive = True
+    if(positive):
+        outputString = "This article is mainly positive. I'm " + str(accuracy*100) + "% sure."
+    else:
+        outputString = "This article is mainly positive. I'm " + str(accuracy*100) + "% sure."
+    return outputString
+
+app.run(port=8888)
 
 st.write("""
 # News Article Classifier App
