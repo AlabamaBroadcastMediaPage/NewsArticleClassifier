@@ -32,7 +32,7 @@ if st.button('Classify'):
     else:
         model_num=2
 
-    url = "https://localhost:8888/getclassification"
+    url = "http://peterpottr.pythonanywhere.com/getclassification"
     my_headers = {
     'Authorization': 'XXXXX',}
     data = { 
