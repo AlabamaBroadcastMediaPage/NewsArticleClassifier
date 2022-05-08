@@ -3,7 +3,6 @@ import pandas as pd
 import streamlit as st
 import requests
 from flask import Flask
-import api_web
 
 
 
@@ -44,5 +43,3 @@ if st.button('Classify'):
     }}
     r = requests.get(url, headers=my_headers, json=data)
     st.write(r.content)
-
-api_web.startlocal()
