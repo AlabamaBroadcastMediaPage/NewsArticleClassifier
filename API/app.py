@@ -2,6 +2,7 @@ from urllib import response
 from flask import Flask
 from flask import request
 from sklearn.linear_model import LogisticRegression
+import numpy as np
 import pickle
 
 app = Flask(__name__)
@@ -15,16 +16,15 @@ def serve_foo():
     site = request.json['q']['site']
 
 
-    loaded_model = pickle.load(open("model.pkl", 'rb'))
+    loaded_model = pickle.load(open("models/model.pkl", 'rb'))
 
-    
+    data = [float(pos),float(neg),float(pos+neg)]
+    predict = loaded_model.predict(data)
 
-    accuracy = 0
-    positive = True
-    if(positive):
-        outputString = "This article is mainly positive. I'm " + str(accuracy*100) + "% sure."
+    if(predict>=0.5):
+        outputString = "This article is mainly positive."
     else:
-        outputString = "This article is mainly positive. I'm " + str(accuracy*100) + "% sure."
+        outputString = "This article is mainly negative."
     return outputString
 
 if __name__ == "__main__":
