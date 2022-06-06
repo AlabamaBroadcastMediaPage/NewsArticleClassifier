@@ -29,7 +29,6 @@ st.write("""
 
 st.write("Who is the author of the article?")
 author = st.text_input('Author name')
-
 site = st.selectbox('What site hosted this article?',('Mandiner', 'Krónika Online', 'HVG'))
 
 uploaded_file = st.file_uploader("Choose a file where you upload the article")
@@ -38,8 +37,8 @@ if uploaded_file is not None:
     pos_count,neg_count = articleSentenceClassification(article_content)
 
 if st.button('Classify'):
-    url = "http://peterpottr.pythonanywhere.com/getclassification"
-    #url = "http://127.0.0.1:5000/getclassification"
+    #url = "http://peterpottr.pythonanywhere.com/getclassification"
+    url = "http://127.0.0.1:5000/getclassification"
     my_headers = {
     'Authorization': 'XXXXX',}
     data = { 
