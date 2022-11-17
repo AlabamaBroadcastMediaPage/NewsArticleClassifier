@@ -27,5 +27,19 @@ def serve_foo():
         outputString = "This article is mainly negative."
     return outputString
 
+@app.route("/translate_accent", methods=['GET'])
+def translate_accent():
+    
+    text = request.json['q']['text']
+    accent = request.json['q']['accent']
+
+    loaded_model = pickle.load(open("models/model.pkl", 'rb'))
+
+    
+
+
+    outputString = "Ennek felel meg eme text"
+    return outputString
+
 if __name__ == "__main__":
     app.run()

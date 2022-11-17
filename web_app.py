@@ -38,7 +38,7 @@ if uploaded_file is not None:
 
 if st.button('Classify'):
     #url = "http://peterpottr.pythonanywhere.com/getclassification"
-    url = "http://127.0.0.1:5000/getclassification"
+    url = "http://127.0.0.1:5000/translate_accent"
     my_headers = {
     'Authorization': 'XXXXX',}
     data = { 
@@ -50,3 +50,4 @@ if st.button('Classify'):
     }}
     r = requests.get(url, headers=my_headers, json=data)
     st.write(r.text)
+
