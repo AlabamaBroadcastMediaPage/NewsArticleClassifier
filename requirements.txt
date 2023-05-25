@@ -9,3 +9,4 @@ sklearn==0.0
 flask==2.1.2
 spacy==3.3.0
 nltk==3.7
+altair<5
